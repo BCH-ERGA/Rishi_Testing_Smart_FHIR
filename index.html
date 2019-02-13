@@ -1,5 +1,7 @@
-<html>
- <head>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta http-equiv='X-UA-Compatible' content='IE=edge' />
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
     <title>My-First-SMART-App</title>
@@ -8,5 +10,18 @@
     <!-- FHIR Client JS Library -->
  <script src='./lib/fhir-client-v0.1.11.js'></script>
   <p> this is a prargraph</p>  
+ <script>
+      extractData().then(
+        //Display Patient Demographics and Observations if extractData was success
+        function(p) {
+          drawVisualization(p);
+        },
+        //Display 'Failed to call FHIR Service' if extractData failed
+        function() {
+          $('#loading').hide();
+          $('#errors').html('<p> Failed to call FHIR Service </p>');
+        }
+      );
+    </script>
 </body> 
 </html>
